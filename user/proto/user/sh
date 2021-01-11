@@ -1,0 +1,10 @@
+
+protoc --proto_path=./proto/v1 --micro_out=./proto --go_out=./proto ./proto/v1/hellow.proto 
+
+protoc --proto_path=./proto/v1 --micro_out=./proto --go_out=./proto  --go-grpc_out=require_unimplemented_servers=false:./proto ./proto/v1/hellow.proto 
+
+如果產生的pb報錯：缺少 github.com/golang/protobuf/proto 或 google.golang.org;
+
+go get => 如果成功下載就OK，不行的話 => not a gitrepository => 找看看是否gopath中有一個下載失敗的文件夾 => 刪掉重新go get一次就OK了
+
+還會報錯的話，請重啟vs code，有時包的引入還沒這麼快
